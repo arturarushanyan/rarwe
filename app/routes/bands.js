@@ -1,7 +1,6 @@
-import Ember from 'ember';
+import Route from '@ember/routing/route';
 
-
-export default Ember.Route.extend({
+export default Route.extend({
   model: function() {
     return this.store.findAll('band');
   },
@@ -19,12 +18,6 @@ export default Ember.Route.extend({
         controller.set('name', '');
         route.transitionTo('bands.band.songs', band);
       });
-    },
-    createSong: function() {
-      var name = this.get('controller').get('name');
-      var song = Song.create({ name: name });
-      this.modelFor('bands').pushObject(band);
-      this.get('controller').set('name', '');
     }
   }
 });

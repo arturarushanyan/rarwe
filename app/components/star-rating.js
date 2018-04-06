@@ -1,5 +1,7 @@
-import Ember from 'ember';
-export default Ember.Component.extend({
+import Component from '@ember/component';
+import { computed } from '@ember/object';
+
+export default Component.extend({
   tagName: 'div',
   classNames: ['rating-panel'],
   rating: 0,
@@ -7,7 +9,7 @@ export default Ember.Component.extend({
   item: null,
   "on-click": null,
 
-  stars: Ember.computed('rating', 'maxRating', function() {
+  stars: computed('rating', 'maxRating', function() {
     var fullStars = this.starRange(1, this.get('rating'), 'full');
     var emptyStars = this.starRange(this.get('rating') + 1,
       this.get('maxRating'), 'empty');

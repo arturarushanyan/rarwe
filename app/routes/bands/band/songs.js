@@ -1,6 +1,7 @@
-import Ember from 'ember';
-import Song from '../../../models/song';
-export default Ember.Route.extend({
+import Route from '@ember/routing/route';
+import { capitalize as capitalizeWords } from '../../../helpers/capitalize';
+
+export default Route.extend({
   model: function() {
     return this.modelFor('bands.band');
   },
@@ -10,7 +11,8 @@ export default Ember.Route.extend({
   actions: {
     didTransition: function() {
       var band = this.modelFor('bands.band');
-      document.title = `${band.get('name')} songs - Rock & Roll`;
+      var name = capitalizeWords(band.get('name'));
+      document.title = `${name} songs - Rock & Roll`;
     },
     createSong: function() {
       var controller = this.get('controller');
