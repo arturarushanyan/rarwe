@@ -1,9 +1,13 @@
-export default function(){
-  // Add your transitions here, like:
-  //   this.transition(
-  //     this.fromRoute('people.index'),
-  //     this.toRoute('people.detail'),
-  //     this.use('toLeft'),
-  //     this.reverse('toRight')
-  //   );
+export default function() {
+  this.transition(
+    this.fromRoute('bands.band.songs'),
+    this.toRoute('bands.band.details'),
+    this.use('toRight'),
+    this.reverse('toLeft')
+  );
+  this.transition(
+    this.hasClass('band-description'),
+    this.toValue(false),
+    this.use('fade', { duration: 500 })
+  )
 }
